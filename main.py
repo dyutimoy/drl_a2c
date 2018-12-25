@@ -21,7 +21,7 @@ def main():
         create_experiment_dirs(config_args.experiment_dir)
 
     a2c = A2C(sess, config_args)
-
+    
     if config_args.to_train:
         a2c.train()
     if config_args.to_test:

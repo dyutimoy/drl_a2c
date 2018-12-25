@@ -2,6 +2,7 @@ from envs.base_env import BaseEnv
 from envs.atari_wrappers import wrap_deepmind
 from envs.monitor import Monitor
 import gym
+import gym_minigrid
 from gym import wrappers
 
 
@@ -11,10 +12,11 @@ class GymEnv(BaseEnv):
         self.seed = seed
         self.make()
         # Get the inside of the wrappers!
-        self.gym_env = self.env.env.env.env.env.env.env
-        self.monitor = self.env.env.env.env.env.env.monitor
+        self.gym_env = self.env.env
+        self.monitor = self.env.env.monitor
 
     def make(self):
+        #print(self.env_name)
         env = Monitor(gym.make(self.env_name), self.rank)
         env.seed(self.seed + self.rank)
         self.env = wrap_deepmind(env)

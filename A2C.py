@@ -13,7 +13,8 @@ class A2C:
                                'learning_rate': args.learning_rate, 'alpha': 0.99, 'epsilon': 1e-5}, args=self.args)
         self.trainer = Trainer(sess, self.model, args=self.args)
         self.env_class = A2C.env_name_parser(self.args.env_class)
-
+        print(self.env_class)
+        input("Press Enter to continue...")
     def train(self):
         env = A2C.make_all_environments(self.args.num_envs, self.env_class, self.args.env_name,
                                         self.args.env_seed)
